@@ -1,5 +1,5 @@
 # YUV-encryption-decryption-player
-This is a player for YUV videos with encryption &amp; decryption capabilities (based on YUV_Viewer, see ReadMe.txt in folder "YUVviewer_EncDec". My contribution: Automata.h, Automata.cpp and Logistic.h, Logistic.cpp). It can encrypt/decrypt videos with different strength, as wll as in different channels (Y/U/V/all 3 channels).  
+This is a player for YUV videos with encryption &amp; decryption capabilities (based on YUV_Viewer, see ReadMe.txt in folder "YUVviewer_EncDec". My contribution: Automa.h, Automa.cpp and Logistic.h, Logistic.cpp). It can encrypt/decrypt videos with different strength, as wll as in different channels (Y/U/V/all 3 channels).  
 The YUV videos can be downloaded from http://trace.eas.asu.edu/yuv/.  
 Encrypted file is named "XXX.e.yuv".  
 Decrypting will not generate a video file. The player will only decrypt and play the decrypted video.  
