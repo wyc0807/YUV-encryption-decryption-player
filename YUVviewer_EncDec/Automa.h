@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Resource.h"
+//define width, heights of different type of videos
 #define U_HEIGHT_QCIF                   72
 #define V_HEIGHT_QCIF                   72
 #define U_WIDTH_QCIF                    88

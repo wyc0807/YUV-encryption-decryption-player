@@ -6,6 +6,7 @@
 #endif // _MSC_VER > 1000
 
 #include "stdafx.h"
+//define size of different type of videos
 #define U_HEIGHT_QCIF                   72
 #define V_HEIGHT_QCIF                   72
 #define U_WIDTH_QCIF                    88

@@ -3,7 +3,7 @@
 #include "Resource.h"
 using namespace std;
 
-int attr[8] = { 53,106,212,169,83,166,77,154 };	//细胞自动机的状态环
+int attr[8] = { 53,106,212,169,83,166,77,154 };	//A status circle of cellular automata
 void Automa::ECAENC_Y(unsigned char R[], int seed, int Width, int Height)
 {
 	int rt, rn, r;
@@ -153,18 +153,18 @@ int Automa::Encrypt(char *file_in, int *key, int flag, int Width, int Height)
 	}
 	file_out[j] = '\0';
 
-	in = fopen(file_in, "rb+");  //rb+表示读写一个二进制的文件
-	out = fopen(file_out, "wb+");  //a表示以附加的方式打开只写文件，若指定位置没有该文件，则创建该文件
+	in = fopen(file_in, "rb+"); 
+	out = fopen(file_out, "wb+"); 
 	if (in == NULL || out == NULL) {
 		return  -1;
 	}
 
 	fseek(out, 0, 0);
-	fseek(in, 0, SEEK_END);   //将文件指针移到文件末尾
-	size = ftell(in);     //得到文件尾相对于文件首的位移，即文件的总字节数
-	rewind(in);       //重置文件指针指向文件头部
-	nFrame = size / (Width*Height*3/2);  //得到视频文件的总帧数
-	//三个分量全部加密
+	fseek(in, 0, SEEK_END);   //move file pointer to file end
+	size = ftell(in);     //get the file's size 
+	rewind(in);       //pointer point to file head
+	nFrame = size / (Width*Height*3/2);  //get the #frames of the video
+	//encrypt all 3 channels
 	if (flag == 0) 
 	{
 		for (int j = 1; j <= nFrame; j++)
@@ -204,7 +204,7 @@ int Automa::Encrypt(char *file_in, int *key, int flag, int Width, int Height)
 		fclose(in);
 		fclose(out);
 	}
-	//Y分量加密
+	//encrypt only Y channel
 	else if (flag == 1)
 	{
 		for (int j = 1; j <= nFrame; j++)
@@ -239,7 +239,7 @@ int Automa::Encrypt(char *file_in, int *key, int flag, int Width, int Height)
 		fclose(in);
 		fclose(out);
 	}
-	//U分量加密
+	//encrypt only U channel
 	else if (flag == 2)
 	{
 		for (int j = 1; j <= nFrame; j++)
@@ -273,7 +273,7 @@ int Automa::Encrypt(char *file_in, int *key, int flag, int Width, int Height)
 		fclose(in);
 		fclose(out);
 	}
-	//V分量加密
+	//encrypt only V channel
 	else if (flag == 3)
 	{
 		for (int j = 1; j <= nFrame; j++)

@@ -23,7 +23,7 @@ int* Logistic::getBin(int data)
 	}
 	return bin;
 }
-double* Logistic::generY0(double y, int K)          //生成Y0
+double* Logistic::generY0(double y, int K)          //generate Y0
 {
 	
 	static double *_y0=new double[K];
@@ -144,17 +144,17 @@ void Logistic::Log_enc_dec_Y(unsigned char* R, double Y0, int ED,int *key, int W
 							z = y0[n];
 						else
 							z = y0[key[9] - n - 1];
-						//1组
+						//group 1
 						if ((z > 0.10&&z<0.13) || (z>0.34&&z<0.37) || z == 0.34 || (z>0.58&&z < 0.62) || z == 0.58)
 						{
 							y = ~y + N;
 						}
-						//2组
+						//group 2
 						else if ((z > 0.13&&z<0.16) || z == 0.13 || (z>0.37&&z<0.40) || z == 0.37 || (z>0.62&&z < 0.66) || z == 0.62)
 						{
 							y = (y^key[3] + N) % N;
 						}
-						//3组
+						//group 3
 						else if ((z > 0.13&&z>0.16) || z == 0.16 || (z>0.40&&z<0.43) || z == 0.40 || (z>0.66&&z < 0.70) || z == 0.66)
 						{
 							if (ED == 1)
@@ -166,7 +166,7 @@ void Logistic::Log_enc_dec_Y(unsigned char* R, double Y0, int ED,int *key, int W
 								y = (y - key[3] - key[4] + 512) % N;								
 							}
 						}
-						//4组
+						//group 4
 						else if ((z > 0.19&&z<0.22) || z == 0.19 || (z>0.43&&z<0.46) || z == 0.43 || (z>0.70&&z < 0.74) || z == 0.70)
 						{
 							if (ED == 1)
@@ -178,12 +178,12 @@ void Logistic::Log_enc_dec_Y(unsigned char* R, double Y0, int ED,int *key, int W
 								y = (((~y + 256) ^ key[3]) + N) % N;				
 							}
 						}
-						//5组
+						//group 5
 						else if ((z > 0.22&&z<0.25) || z == 0.22 || (z>0.46&&z<0.49) || z == 0.46 || (z>0.74&&z < 0.78) || z == 0.74)
 						{
 							y = (y^key[6] + N) % N;
 						}
-						//6组
+						//group 6
 						else if ((z > 0.25&&z<0.28) || z == 0.25 || (z>0.49&&z<0.52) || z == 0.49 || (z>0.78&&z < 0.82) || z == 0.78)
 						{
 							if (ED == 1)
@@ -196,7 +196,7 @@ void Logistic::Log_enc_dec_Y(unsigned char* R, double Y0, int ED,int *key, int W
 
 							}
 						}
-						//7组
+						//group 7
 						else if ((z > 0.28&&z<0.31) || z == 0.28 || (z>0.52&&z<0.55) || z == 0.52 || (z>0.82&&z < 0.86))
 						{
 							if (ED == 1)
@@ -208,7 +208,7 @@ void Logistic::Log_enc_dec_Y(unsigned char* R, double Y0, int ED,int *key, int W
 								y = (((~y + 256) ^ key[6]) + N) % N;		
 							}
 						}
-						//8组无操作
+						//no operations on group 8
 					}
 					if(Width==176)
 						Y_encrypted[j*bsize + k][i*bsize + l] = y;
@@ -271,17 +271,17 @@ void Logistic::Log_enc_dec_U(unsigned char* R, double Y0, int ED,int *key, int W
 							z = y0[n];
 						else
 							z = y0[key[9] - n - 1];
-						//1组
+						//group 1
 						if ((z > 0.10&&z<0.13) || (z>0.34&&z<0.37) || z == 0.34 || (z>0.58&&z < 0.62) || z == 0.58)
 						{
 							u = ~u + N;
 						}
-						//2组
+						//group 2
 						else if ((z > 0.13&&z<0.16) || z == 0.13 || (z>0.37&&z<0.40) || z == 0.37 || (z>0.62&&z < 0.66) || z == 0.62)
 						{
 							u = (u^key[4] + N) % N;
 						}
-						//3组
+						//group 3
 						else if ((z > 0.13&&z>0.16) || z == 0.16 || (z>0.40&&z<0.43) || z == 0.40 || (z>0.66&&z < 0.70) || z == 0.66)
 						{
 							if (ED == 1)
@@ -289,7 +289,7 @@ void Logistic::Log_enc_dec_U(unsigned char* R, double Y0, int ED,int *key, int W
 							else
 								u = (u - key[4] - key[5] + 512) % N;
 						}
-						//4组
+						//group 4
 						else if ((z > 0.19&&z<0.22) || z == 0.19 || (z>0.43&&z<0.46) || z == 0.43 || (z>0.70&&z < 0.74) || z == 0.70)
 						{
 							if (ED == 1)
@@ -297,12 +297,12 @@ void Logistic::Log_enc_dec_U(unsigned char* R, double Y0, int ED,int *key, int W
 							else
 								u = (((~u + 256) ^ key[4]) + N) % N;
 						}
-						//5组
+						//group 5
 						else if ((z > 0.22&&z<0.25) || z == 0.22 || (z>0.46&&z<0.49) || z == 0.46 || (z>0.74&&z < 0.78) || z == 0.74)
 						{
 							u = (u^key[7] + N) % N;
 						}
-						//6组
+						//group 6
 						else if ((z > 0.25&&z<0.28) || z == 0.25 || (z>0.49&&z<0.52) || z == 0.49 || (z>0.78&&z < 0.82) || z == 0.78)
 						{
 							if (ED == 1)
@@ -314,7 +314,7 @@ void Logistic::Log_enc_dec_U(unsigned char* R, double Y0, int ED,int *key, int W
 								u = (u - key[7] - key[8] + 512) % N;
 							}
 						}
-						//7组
+						//group 7
 						else if ((z > 0.28&&z<0.31) || z == 0.28 || (z>0.52&&z<0.55) || z == 0.52 || (z>0.82&&z < 0.86))
 						{
 							if (ED == 1)
@@ -326,7 +326,7 @@ void Logistic::Log_enc_dec_U(unsigned char* R, double Y0, int ED,int *key, int W
 								u = (((~u + 256) ^ key[7]) + N) % N;
 							}
 						}
-						//8组无操作
+						//no operations on group 8
 					}
 					if (Width == 88)
 						U_encrypted[j*bsize + k][i*bsize + l] = u;
@@ -387,17 +387,17 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 							z = y0[n];
 						else
 							z = y0[key[9] - n - 1];
-						//1组
+						//group 1
 						if ((z > 0.10&&z<0.13) || (z>0.34&&z<0.37) || z == 0.34 || (z>0.58&&z < 0.62) || z == 0.58)
 						{
 							u = ~u + N;
 						}
-						//2组
+						//group 2
 						else if ((z > 0.13&&z<0.16) || z == 0.13 || (z>0.37&&z<0.40) || z == 0.37 || (z>0.62&&z < 0.66) || z == 0.62)
 						{
 							u = (u^key[4] + N) % N;
 						}
-						//3组
+						//group 3
 						else if ((z > 0.13&&z>0.16) || z == 0.16 || (z>0.40&&z<0.43) || z == 0.40 || (z>0.66&&z < 0.70) || z == 0.66)
 						{
 							if (ED == 1)
@@ -405,7 +405,7 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 							else
 								u = (u - key[4] - key[5] + 512) % N;
 						}
-						//4组
+						//group 4
 						else if ((z > 0.19&&z<0.22) || z == 0.19 || (z>0.43&&z<0.46) || z == 0.43 || (z>0.70&&z < 0.74) || z == 0.70)
 						{
 							if (ED == 1)
@@ -413,12 +413,12 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 							else
 								u = (((~u + 256) ^ key[4]) + N) % N;
 						}
-						//5组
+						//group 5
 						else if ((z > 0.22&&z<0.25) || z == 0.22 || (z>0.46&&z<0.49) || z == 0.46 || (z>0.74&&z < 0.78) || z == 0.74)
 						{
 							u = (u^key[7] + N) % N;
 						}
-						//6组
+						//group 6
 						else if ((z > 0.25&&z<0.28) || z == 0.25 || (z>0.49&&z<0.52) || z == 0.49 || (z>0.78&&z < 0.82) || z == 0.78)
 						{
 							if (ED == 1)
@@ -430,7 +430,7 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 								u = (u - key[7] - key[8] + 512) % N;
 							}
 						}
-						//7组
+						//group 7
 						else if ((z > 0.28&&z<0.31) || z == 0.28 || (z>0.52&&z<0.55) || z == 0.52 || (z>0.82&&z < 0.86))
 						{
 							if (ED == 1)
@@ -442,7 +442,7 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 								u = (((~u + 256) ^ key[7]) + N) % N;
 							}
 						}
-						//8组无操作
+						//no operations on group 8
 					}
 					if (Width == 88)
 						V_encrypted[j*bsize + k][i*bsize + l] = u;
@@ -462,124 +462,6 @@ void Logistic::Log_enc_dec_V(unsigned char* R, double Y0, int ED, int *key, int 
 			else
 				R[i*Height + k] = V_encrypted_CIF[i][k];
 		}
-
-	/*int N = 256;
-	int v;
-	int bsize = 4;
-	int width = Width / bsize;
-	int height = Height / bsize;
-	double y, z;
-	y = Y0;
-	if (Width == 176)
-	{
-		for (int i = 0; i < Width; i++)
-			for (int j = 0; j < Height; j++)
-				enV_init_CIF[i][j] = R[i*Height + j];
-	}
-	else
-	{
-		for (int i = 0; i < Width; i++)
-			for (int j = 0; j < Height; j++)
-				enV_init[i][j] = R[i*Height + j];
-	}
-	for (int j = 0; j < width; j++)
-	{
-		for (int i = 0; i < height; i++)
-		{
-			for (int l = 0; l < 4; l++)
-			{
-				for (int k = 0; k < 4; k++)
-				{
-					if (Width == 176)
-						v = enV_init_CIF[j*bsize + k][i*bsize + l]; 
-					else
-						v = enV_init[j*bsize + k][i*bsize + l];
-					double *y0 = generY0(y, key[9]);
-					y = y0[key[9] - 1];
-					for (int n = 0; n < key[9]; n++)
-					{
-						if (ED == 1)
-							z = y0[n];
-						else
-							z = y0[key[9] - n - 1];
-						//1组
-						if ((z > 0.10&&z<0.13) || (z>0.34&&z<0.37) || z == 0.34 || (z>0.58&&z < 0.62) || z == 0.58)
-							v = ~v + N;
-						//2组
-						else if ((z > 0.13&&z<0.16) || z == 0.13 || (z>0.37&&z<0.40) || z == 0.37 || (z>0.62&&z < 0.66) || z == 0.62)
-							v = (v^key[5] + N) % N;
-						//3组
-						else if ((z > 0.13&&z > 0.16) || z == 0.16 || (z > 0.40&&z<0.43) || z == 0.40 || (z>0.66&&z < 0.70) || z == 0.66)
-						{
-							if (ED == 1)
-								v = (v + key[5] + key[3]) % N;
-							else
-								v = (v - key[5] - key[3] + 512) % N;
-						}
-						//4组
-						else if ((z > 0.19&&z<0.22) || z == 0.19 || (z>0.43&&z<0.46) || z == 0.43 || (z>0.70&&z < 0.74) || z == 0.70)
-						{
-							if (ED == 1)
-								v = (~(v^key[5]) + N) % N;
-							else
-								v = (((~v + 256) ^ key[5]) + N) % N;
-						}
-						//5组
-						else if ((z > 0.22&&z<0.25) || z == 0.22 || (z>0.46&&z<0.49) || z == 0.46 || (z>0.74&&z < 0.78) || z == 0.74)
-							v = (v^key[8] + N) % N;
-						//6组
-						else if ((z > 0.25&&z<0.28) || z == 0.25 || (z>0.49&&z<0.52) || z == 0.49 || (z>0.78&&z < 0.82) || z == 0.78)
-						{
-							if (ED == 1)
-								v = (v + key[8] + key[6]) % N;
-
-							else
-								v = (v - key[8] - key[6] + 512) % N;
-						}
-						//7组
-						else if ((z > 0.28&&z<0.31) || z == 0.28 || (z>0.52&&z<0.55) || z == 0.52 || (z>0.82&&z < 0.86))
-						{
-							if (ED == 1)
-								v = (~(v^key[8] + N)) % N;
-							else
-								v = (((~v + 256) ^ key[8]) + N) % N;
-						}
-						//8组无操作
-					}
-					if (Width ==176)
-						V_encrypted_CIF[j*bsize + k][i*bsize + l] = v;
-					else
-						V_encrypted[j*bsize + k][i*bsize + l] = v;
-						
-				}
-			}
-			for (int k = 0; k < 9; k++)
-				key[k] = (key[k] + key[9]) % N;
-		}
-	}
-	if (Width == 88)
-	{
-		for (int i = 0; i < Width; i++)
-			for (int k = 0; k < Height; k++)
-				R[i*Height + k] = V_encrypted[i][k];
-	}
-	else
-	{
-		for (int i = 0; i < Width; i++)
-			for (int k = 0; k < Height; k++)
-				R[i*Height + k] = V_encrypted_CIF[i][k];
-	}*/
-	
-	/*for (int i = 0; i < Width; i++)
-	{
-		for (int k = 0; k < Height; k++)
-		{
-			if (Width == 176)
-				R[i*Height + k] = V_encrypted_CIF[i][k];
-			else
-				R[i*Height + k] = V_encrypted[i][k];
-		}
-	}*/
 }
 
 int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int Height,int EncDec) 
@@ -613,18 +495,18 @@ int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int H
 	U_HEIGHT = Height / 2;
 	V_WIDTH = Width / 2;
 	V_HEIGHT = Height / 2;
-	in = fopen(file_in, "rb+");  //rb+表示读写一个二进制的文件
-	out = fopen(file_out, "wb+");  //a表示以附加的方式打开只写文件，若指定位置没有该文件，则创建该文件
+	in = fopen(file_in, "rb+");  
+	out = fopen(file_out, "wb+");  
 	//if(EncDec==1)
-		//out = fopen(file_out, "wb+");  //a表示以附加的方式打开只写文件，若指定位置没有该文件，则创建该文件
+		//out = fopen(file_out, "wb+"); 
 	if (in == NULL||out==NULL)
 		return  -1;
 
 	fseek(out, 0, 0);
-	fseek(in, 0, SEEK_END);   //将文件指针移到文件末尾
-	size = ftell(in);     //得到文件尾相对于文件首的位移，即文件的总字节数
-	rewind(in);       //重置文件指针指向文件头部
-	nFrame = size / (Width*Height * 3 / 2);   //得到视频文件的总帧数
+	fseek(in, 0, SEEK_END);   ///move file pointer to file end
+	size = ftell(in);     //get the file's size 
+	rewind(in);       //pointer re-point to file head
+	nFrame = size / (Width*Height * 3 / 2);   //get the #frames of the video
 	for (int j = 1; j <= nFrame; j++)
 	{
 		if (Y_WIDTH == 176) 
@@ -645,10 +527,10 @@ int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int H
 			for (i = 0; i < V_WIDTH*V_HEIGHT; i++)
 				fread(&V_space_CIF[i], sizeof(unsigned char), sizeof(unsigned char), in);
 		}
-		//加/解密,1表示加密，-1表示解密
+		//encrypt/decrypt,1 means enc，-1 means dec
 		if (EncDec == 1) 
 		{
-			if (flag == 0)		//全加密
+			if (flag == 0)		//all channels
 			{
 				if (Y_WIDTH == 176)
 				{
@@ -686,7 +568,7 @@ int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int H
 				}
 				
 			}
-			else if (flag == 1)		//Y加密
+			else if (flag == 1)		//Y channel
 			{
 				if (Y_WIDTH == 176)
 				{
@@ -719,7 +601,7 @@ int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int H
 					}
 				}	
 			}
-			else if (flag == 2)		//U加密
+			else if (flag == 2)		//U channel
 			{
 				if (Y_WIDTH == 176)
 				{
@@ -748,7 +630,7 @@ int Logistic::Logistic_chaos_map(char *file_in,int *KEY,int flag,int Width,int H
 							enV_space_CIF[i*U_HEIGHT + k] = V_space_CIF[i*U_HEIGHT + k];
 				}
 			}
-			else if (flag == 3)		//V加密
+			else if (flag == 3)		//V channel
 			{
 				if (Y_WIDTH == 176)
 				{
