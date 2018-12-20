@@ -7,5 +7,5 @@ Decrypting will not generate a video file. The player will only decrypt and play
 EXE file: YUVviewer_EncDec.exe
 
 Key input instructions:  
-Low strength(cellular automata) encryption/decryption: 24bit key (3 numbers no more than 255) separated by a comma (example: 20,50,10).  
-High strength(logistic chaos map) encryption/decryption: 80bit key (10 numbers no more than 255) separated by a comma (example: 20,50,10,59,166,1,23,56,55,99).
+Low strength(cellular automata) encryption/decryption: 24bit key (3 numbers no more than 255) separated by comma (example: 20,50,10).  
+High strength(logistic chaos map) encryption/decryption: 80bit key (10 numbers no more than 255) separated by comma (example: 20,50,10,59,166,1,23,56,55,99).
